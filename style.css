@@ -1,0 +1,12 @@
+* {
+    border: 1px solid #ff0000;
+}
+
+.cell {
+    height: 50px;
+    width: 50px;
+}
+
+footer {
+    text-align: center;
+}
