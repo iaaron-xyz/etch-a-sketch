@@ -2,9 +2,37 @@
     border: 1px solid #ff0000;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+body .board {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 0;
+}
+
+.grid-board {
+    height: 720px;
+    width: 720px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .cell {
-    height: 50px;
-    width: 50px;
+    height: 358px;
+    width: 358px;
+}
+.controls {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.control-item {
+    margin-bottom: 15px;
 }
 
 footer {
