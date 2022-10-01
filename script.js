@@ -6,6 +6,7 @@ const gridBoard = document.getElementById("grid-board");
 //let windowWidth = window.innerWidth;
 //let windowHeight = window.innerHeight;
 const gridHeight = getComputedStyle(gridBoard).height;
+console.log(gridHeight.slice(0,3));
 
 // Define starting variables
 let gridSide = 16;
@@ -17,7 +18,9 @@ function createGrid() {
         const div = document.createElement("div");
         div.classList.add("cell");
         div.style.cssText = `height: ${parseInt(gridHeight.slice(0, 3))/gridSide}px;
-                             width: ${parseInt(gridHeight)/gridSide}px;`;
+                             width: ${parseInt(gridHeight.slice(0, 3))/gridSide}px;`;
+        // test
+        div.innerHTML = i+1;
         gridBoard.appendChild(div);
     }
 }
