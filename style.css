@@ -1,30 +1,30 @@
-* {
-    border: 1px solid #ff0000;
-}
+/* * {
+    border: 1px solid #0000ff;
+} */
 
 body {
+    height: 100vh;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
 }
 
-body .board {
+#board {
     display: flex;
     justify-content: center;
-    flex: 1 1 0;
+    flex: 1;
 }
-
-.grid-board {
+#grid-board {
     height: 720px;
     width: 720px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 .cell {
-    height: 358px;
-    width: 358px;
+    box-sizing: border-box;
+    border: 1px solid #ff0000;
 }
 .controls {
     margin-left: 100px;
