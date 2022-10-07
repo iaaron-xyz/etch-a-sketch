@@ -12,22 +12,48 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-        <h1> Etch A Sketch!</h1>
+    <!-- Title -->
+    <h1 class="title">Etch A Sketch!</h1>
 
+    <!-- Board section -->
     <div id="board">
+        <!-- Controls section left -->
+        <div class="controls controls-left">
+            <h3>Dimensions</h3>
+            <form class="control-item slider" action="">
+                <label for="grid-size">Grid size:</label><br>
+                <input type="range" id="grid-size" name="grid-size" value="16">
+            </form>
+            <div id="range-value">
+                NNN
+            </div>
+            <form class="control-item buttons" action="">
+                <button id="10x" class="btn-size" onclick="changeSize()">10x10</button>
+                <button id="16x" class="btn-size" onclick="changeSize()">16x16</button>
+                <button id="32x" class="btn-size" onclick="changeSize()">32x32</button>
+                <button id="64x" class="btn-size" onclick="changeSize()">64x64</button>
+            </form>
+        </div>
+
+        <!-- Grid section -->
         <div id="grid-board">
         </div>
-    
-        <div class="controls">
+        
+        <!-- Controls section roght -->
+        <div class="controls controls-right">
             <h3>Controls</h3>
-            <button class="control-item">Clear</button>
-            <div class="control-item">
-                <label for="grid-size">Grid size:</label>
-                <input type="text" id="grid-size" name="grid-size">
+            <div class="control-item clear-grid">
+                <button class="control-item">Clear</button>
+            </div>
+            <div class="control-item set-colors-grid">
+                <h3>Colors</h3>
+                <button>Black</button>
+                <button>Random</button>
             </div>
         </div>
     </div>
-
+    
+    <!-- Footer -->
     <footer>
         iaaron.xyz | <a href="">Source</a>
     </footer>
