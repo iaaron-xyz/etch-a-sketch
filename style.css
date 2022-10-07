@@ -41,8 +41,12 @@ button {
     flex-wrap: wrap;
 }
 .cell {
+    background-color: white;
     box-sizing: border-box;
     border: 1px solid #ff0000;
+}
+.cell-black {
+    background-color: black;
 }
 .controls {
     width: 250px;
