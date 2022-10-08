@@ -19,14 +19,15 @@
     <div id="board">
         <!-- Controls section left -->
         <div class="controls controls-left">
+            
             <h3>Dimensions</h3>
-            <form class="control-item slider" action="">
+            <div id="slider-form" class="control-item">
                 <label for="grid-size">Grid size:</label><br>
-                <input type="range" id="grid-size" name="grid-size" value="16">
-            </form>
-            <div id="range-value">
-                NNN
+                <input type="range" id="slider" name="grid-size" value="16" min="2" max="100">
             </div>
+            <button id="output-slider-value" type="button">
+            </button>
+
             <div class="control-item buttons">
                 <button id="10x" class="btn-change-size" onclick="setBoardSize(this.id)">10x10</button>
                 <button id="16x" class="btn-change-size" onclick="setBoardSize(this.id)">16x16</button>

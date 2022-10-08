@@ -8,6 +8,8 @@ const cellsToBlackColor = document.getElementById("cells-to-black-color");
 const cellsToRandomColor = document.getElementById("cells-to-random-color");
 const cellsToBaseColor = document.getElementById("cells-to-base-color");
 const clearBoard = document.getElementById("clear-board");
+const slider = document.getElementById("slider");
+const outputSliderValue = document.getElementById("output-slider-value");
 
 // Grid size initial value
 let gridSide = 16;
@@ -93,9 +95,7 @@ function changeCellColor() {
 function setBoardToBaseColor() {
     console.log(boardVariables);
     setBoardSize(boardVariables.sideSize);
-
 }
-
 function generateRandomBackgroundColor() {
     const randomRGB = `rgb(${setRandomRange(0,255)}, ${setRandomRange(0,255)}, ${setRandomRange(0,255)})`
     return randomRGB;
@@ -126,15 +126,28 @@ cellsToRandomColor.addEventListener("click", () => {
     boardVariables.black = false;
     boardVariables.random = true;
     console.log(boardVariables);
-})
+});
 cellsToBaseColor.addEventListener("click", () => {
     boardVariables.black = false;
     boardVariables.random = false;
     console.log(boardVariables);
-})
+});
 
 // Paint the board cells when clicked
-gridBoard.addEventListener("click", changeCellColor, onmousedown="return false");
+gridBoard.addEventListener("mouseover", changeCellColor);
 
 // clear the board to its original state
 clearBoard.addEventListener("click", setBoardToBaseColor);
+
+// Display the initial value of the slider
+outputSliderValue.innerHTML = slider.value;
+value = slider.value; // ¿¿¿ why the heck works without referencing outputSliderValue ???
+// Update and display the value of the slider dynamically
+slider.oninput = function() {
+    outputSliderValue.innerHTML = this.value;
+    value = this.value;// ¿¿¿ why the heck works without referencing outputSliderValue ???
+}
+// Change the grid size based on the slider value
+outputSliderValue.addEventListener("click", () => {
+    setBoardSize(parseInt(this.value));
+})
