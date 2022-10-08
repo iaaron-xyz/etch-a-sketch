@@ -57,7 +57,7 @@ function changeCellColor() {
         for (let i=0; i<cells.length; i++) {
             cells[i].onclick = function(e) {
                 console.log(e.path[0].id);
-                this.classList.add("cell-black");
+                e.target.style.backgroundColor="black";
             }
         }
     }
