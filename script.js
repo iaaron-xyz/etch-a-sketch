@@ -6,6 +6,7 @@
 const gridBoard = document.getElementById("grid-board");
 const cellsToBlackColor = document.getElementById("cells-to-black-color");
 const cellsToRandomColor = document.getElementById("cells-to-random-color");
+const cellsToBaseColor = document.getElementById("cells-to-base-color");
 
 // Grid size initial value
 let gridSide = 16;
@@ -70,6 +71,15 @@ function changeCellColor() {
             }
         }
     }
+    // Otherwise "erase", set cells color to the grid color
+    else {
+        for (let i=0; i<cells.length; i++) {
+            cells[i].onclick = function(e) {
+                console.log(e.path[0].id);
+                e.target.style.backgroundColor="white";
+            }
+        }
+    }
 }
 
 function generateRandomBackgroundColor() {
@@ -101,6 +111,11 @@ cellsToBlackColor.addEventListener("click", () => {
 cellsToRandomColor.addEventListener("click", () => {
     colors.black = false;
     colors.random = true;
+    console.log(colors);
+})
+cellsToBaseColor.addEventListener("click", () => {
+    colors.black = false;
+    colors.random = false;
     console.log(colors);
 })
 
