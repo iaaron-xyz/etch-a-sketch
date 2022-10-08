@@ -43,7 +43,7 @@ button {
 .cell {
     background-color: white;
     box-sizing: border-box;
-    border: 1px solid #ff0000;
+    border: 1px solid #000000;
 }
 .cell-black {
     background-color: black;
