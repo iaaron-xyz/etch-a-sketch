@@ -52,6 +52,8 @@ button:hover {
 .cell {
     background-color: white;
     box-sizing: border-box;
+}
+.show-grid {
     border: 1px solid #d4d4d4;
 }
 .controls {
@@ -93,6 +95,10 @@ button:hover {
     height: auto;
     width: 100%;
     padding: 10px;
+}
+#toggle-grid {
+    background-color: #222;
+    color: #d4d4d4;
 }
 
 .color-options {

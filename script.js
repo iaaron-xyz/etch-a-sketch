@@ -10,11 +10,12 @@ const cellsToBaseColor = document.getElementById("cells-to-base-color");
 const clearBoard = document.getElementById("clear-board");
 const slider = document.getElementById("slider");
 const outputSliderValue = document.getElementById("output-slider-value");
+const toggleGrid = document.getElementById("toggle-grid");
 
 // Grid size initial value
 let gridSide = 16;
 // Current color active
-let boardVariables = {"sideSize":gridSide, "black": true, "random": false};
+let boardVariables = {"sideSize":gridSide, "black": true, "random": false, "gridLines": 0};
 
 /***************************************************
  * FUNCTIONS
@@ -30,7 +31,14 @@ function createGrid(gridSide) {
     for (let i = 0; i < gridArea; i++) {
         // create the cell in the virtual DOM
         const div = document.createElement("div");
-        div.classList.add("cell");
+        // with or withou grid-lines?
+        if (boardVariables.gridLines%2 == 1) {
+            div.classList.add("cell");
+            div.classList.add("show-grid");
+        }
+        else {
+            div.classList.add("cell");
+        }
         // Append the child node with the inline CSS
         div.style.cssText = `height: ${parseInt(gridHeight.slice(0, 3))/gridSide}px;
                             width: ${parseInt(gridHeight.slice(0, 3))/gridSide}px;`;
@@ -83,6 +91,12 @@ function colorCell(event) {
     }
 }
 
+function toggleGridLines() {
+    const cells = document.querySelectorAll('.cell');
+    boardVariables.gridLines += 1;
+    cells.forEach(cell => cell.classList.toggle("show-grid"));
+}
+
 function setBoardToBaseColor() {
     console.log(boardVariables);
     setBoardSize(boardVariables.sideSize);
@@ -130,6 +144,9 @@ gridBoard.addEventListener('mouseup', stopDrawing);
 
 // clear the board to its original state
 clearBoard.addEventListener("click", setBoardToBaseColor);
+
+// Add/remove the gridlines
+toggleGrid.addEventListener("click", toggleGridLines);
 
 // Display the initial value of the slider
 outputSliderValue.innerHTML = slider.value;
