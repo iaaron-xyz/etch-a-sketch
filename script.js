@@ -58,37 +58,28 @@ function setBoardSize(buttonId) {
     createGrid(newDimension);
 }
 
-function changeCellColor() {
-    // cells variable has to be assigned after creating the cells
-    // otherwise will return an empy node list
-    let cells = document.querySelectorAll(".cell");
-
-    // Set color to black
-    if (boardVariables.black == true) {
-        for (let i=0; i<cells.length; i++) {
-            cells[i].onclick = function(e) {
-                console.log(e.path[0].id);
-                e.target.style.backgroundColor="black";
-            }
-        }
+function startDrawing(event) {
+    event.preventDefault(); // tell the browser we handle that event
+    // console.log("start drawing");
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => cell.addEventListener('mouseover', colorCell));
+}
+function stopDrawing(event) {
+    event.preventDefault(); // tell the browser we handle that event
+    // console.log("stop drawing");
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => cell.removeEventListener('mouseover', colorCell));
+}
+function colorCell(event) {
+    event.preventDefault(); // tell the browser we handle that event
+    if (boardVariables.black === true) {
+        event.target.style.backgroundColor = "black";
     }
-    // Set colors to random
-    else if (boardVariables.random == true) {
-        for (let i=0; i<cells.length; i++) {
-            cells[i].onclick = function(e) {
-                console.log(e.path[0].id);
-                e.target.style.backgroundColor=generateRandomBackgroundColor();
-            }
-        }
+    else if (boardVariables.random === true) {
+        event.target.style.backgroundColor = chooseRandomRGB();
     }
-    // Otherwise "erase", set cells color to the grid color
     else {
-        for (let i=0; i<cells.length; i++) {
-            cells[i].onclick = function(e) {
-                console.log(e.path[0].id);
-                e.target.style.backgroundColor="white";
-            }
-        }
+        event.target.style.backgroundColor = "white";
     }
 }
 
@@ -96,11 +87,11 @@ function setBoardToBaseColor() {
     console.log(boardVariables);
     setBoardSize(boardVariables.sideSize);
 }
-function generateRandomBackgroundColor() {
-    const randomRGB = `rgb(${setRandomRange(0,255)}, ${setRandomRange(0,255)}, ${setRandomRange(0,255)})`
-    return randomRGB;
+function chooseRandomRGB() {
+    const randomColor = `rgb(${randomInt(0,255)}, ${randomInt(0,255)}, ${randomInt(0,255)})`
+    return randomColor;
 }
-function setRandomRange(lowerLimit,  upperLimit) {
+function randomInt(lowerLimit,  upperLimit) {
     if (lowerLimit < upperLimit) {
         return Math.floor(lowerLimit + (Math.random()*upperLimit))
     }
@@ -133,8 +124,9 @@ cellsToBaseColor.addEventListener("click", () => {
     console.log(boardVariables);
 });
 
-// Paint the board cells when clicked
-gridBoard.addEventListener("mouseover", changeCellColor);
+// Paint the board cells while LMB down
+gridBoard.addEventListener('mousedown', startDrawing);
+gridBoard.addEventListener('mouseup', stopDrawing);
 
 // clear the board to its original state
 clearBoard.addEventListener("click", setBoardToBaseColor);
