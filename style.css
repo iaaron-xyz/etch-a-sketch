@@ -44,8 +44,8 @@ button:hover {
     flex: 1;
 }
 #grid-board {
-    height: 720px;
-    width: 720px;
+    height: 620px;
+    width: 620px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -59,8 +59,8 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Amatic SC', serif;
-    font-size: 25px;
+    font-family: 'Silkscreen', serif;
+    font-size: 20px;
 }
 .controls-left {
     margin-right: 50px;
@@ -84,9 +84,24 @@ button:hover {
     align-items: center;
 }
 
-#clear-board {
+.board-options {
+    width: 100%;
+}
+.board-options button {
     background-color: #d4d4d4;
     color: #222;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+.color-options {
+    width: 100%;
+}
+.color-options button {
+    width: 100%;
+    height: auto;
+    padding: 10px;
 }
 #cells-to-black-color {
     color: white;
@@ -101,16 +116,8 @@ button:hover {
     color: white;
 }
 
-#active-black-color {
-    background-color: #222;
-    color: #d4d4d4;
-}
-#active-random-color {
-    background-image: linear-gradient(135deg, rgb(255, 46, 46),rgb(255, 189, 66),rgb(255, 255, 131),rgb(98, 194, 98),rgb(110, 110, 252),rgb(145, 80, 192));
-    color: #222;
-}
-#active-base-color {
-    background-color: #d4d4d4;
+.active-color-btn {
+    background-color: #f0f0d7;
     color: #222;
 }
 
